@@ -1,5 +1,8 @@
 let p=document.querySelector("#description");
 let typingarea=document.querySelector(".typing-area");
+let time=document.getElementById("time");
+let wpm=document.getElementById("wpm");
+let accuracy=document.getElementById("accuracy");
  const sentences = [
   "The sun rises in the east and sets in the west every single day.",
   "Programming teaches us how to solve problems using logical thinking and creativity.",
@@ -13,9 +16,26 @@ let typingarea=document.querySelector(".typing-area");
   "The future belongs to people who continue learning and adapting to change."
 ];
 
+let initialvalue=0;
+let stoppingvalue=60;
+function oneminutetimer(){
+const Timer=setInterval(()=>{
+    const current=initialvalue+1;
+    initialvalue=current;
+    time.textContent=initialvalue;
+    if(initialvalue===stoppingvalue){
+        clearInterval(Timer);
+    }
+},1000);
+
+}
+
 const button=document.getElementById("button");
 button.addEventListener("click",()=>{
     let randomNumber=Math.random();
     let randomIndex=Math.floor(randomNumber*sentences.length);
     p.textContent=sentences[randomIndex];
+    oneminutetimer();
 })
+
+

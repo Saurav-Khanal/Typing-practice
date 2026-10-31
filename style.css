@@ -22,6 +22,9 @@ body {
   margin: 10px;
   border-radius: 20px;
   align-items: center;
+  display: flex;
+  flex-direction: column;
+  
 }
 
 .typing-container {
@@ -36,8 +39,15 @@ body {
    height: 100px;
   width: 100%;
   border: 2px solid black;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  background-color: white;
 }
 
+#description{
+  font-size: 25px;
+}
 .typing-div {
   width: 100%;
 }
@@ -73,3 +83,4 @@ body {
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   font-size: 22px;
 }
+
