@@ -1,0 +1,74 @@
+body {
+  background-color: aliceblue;
+}
+.container {
+  padding: 20px;
+}
+.status-view {
+  display: flex;
+  justify-content: space-around;
+  gap: 20px;
+}
+.box {
+  height: 200px;
+  width: 300px;
+  background-color: rgb(157, 232, 253);
+  display: flex;
+  justify-content: center;
+  border: none;
+  margin: 10px;
+  border-radius: 20px;
+  align-items: center;
+}
+
+.typing-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.typing-des {
+  min-width: 100%;
+}
+
+.typing-div {
+  width: 100%;
+}
+.typing-des input {
+  height: 100px;
+  width: 100%;
+}
+
+.typing-div textarea {
+  width: 100%;
+  height: 200px;
+}
+
+#button {
+  background-color: blue;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  width: 200px;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.bottom-area {
+  display: flex;
+  justify-content: space-between;
+}
+
+.bottom-area h1 {
+  color: rgb(246, 207, 157);
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+.bottom-area p {
+  color: rgb(13, 1, 1);
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-size: 22px;
+}
