@@ -35,10 +35,10 @@ function oneminutetimer() {
     if (initialvalue === stoppingvalue) {
       clearInterval(Timer);
     }
-    if(initialvalue===60){
-    typingarea.disabled=true;
-    typingarea.value="Time is up!!!";
-  }
+    if (initialvalue === 60) {
+      typingarea.disabled = true;
+      typingarea.value = "Time is up!!!";
+    }
   }, 1000);
 }
 
@@ -48,22 +48,28 @@ button.addEventListener("click", () => {
   let randomNumber = Math.random();
   let randomIndex = Math.floor(randomNumber * sentences.length);
   p.textContent = sentences[randomIndex];
+  const sourcesText = sentences[randomIndex];
+  calculationError(sourcesText);
   oneminutetimer();
   calculatewpm();
-  calculateError(sentences[randomIndex]);
 });
 
 function calculatewpm() {
-  typingarea.addEventListener("input", () => {
+  typingarea.addEventListener("input", (e) => {
+    usertype = e.value;
     let oneword = 5;
     const totalcharacter = typingarea.value.length;
     const totalword = Math.floor(totalcharacter / oneword);
     const totalTime = initialvalue;
     const wordperminute = Math.floor((totalword * 60) / totalTime);
-    wpm.textContent=wordperminute;
+    wpm.textContent = wordperminute;
   });
 }
 
-function calculateError(e){
-    console.log(e);
+function calculationError(sourcesText) {
+  typingarea.addEventListener("input", (e) => {
+    const userType = e.target.value;
+    console.log(sourcesText);
+    console.log(userType);
+  });
 }
