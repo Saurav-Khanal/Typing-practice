@@ -1,10 +1,11 @@
+
 let p = document.querySelector("#description");
 let typingarea = document.querySelector(".typing-area");
 let time = document.getElementById("time");
 let wpm = document.getElementById("wpm");
-let mistake= document.getElementById("mistake");
+let mistake = document.getElementById("mistake");
 const button = document.getElementById("button");
-const highscore=document.getElementById("high-wpm");
+const highscore = document.getElementById("high-wpm");
 const sentences = [
   "The sun rises in the east every morning, bringing light and warmth to the world. Birds begin singing, people wake up, and nature slowly becomes active. Every sunrise reminds us that life gives us another opportunity to learn something new, correct our mistakes, work toward our goals, and make meaningful progress in everything we do.",
 
@@ -40,19 +41,19 @@ function oneminutetimer() {
     if (initialvalue === 60) {
       typingarea.disabled = true;
       typingarea.value = "Time is up!!!";
-      button.disabled=false;
-      initialvalue=0;
-      button.textContent="Start Test Again";
+      button.disabled = false;
+      initialvalue = 0;
+      button.textContent = "Start Test Again";
     }
   }, 1000);
 }
 
-button.addEventListener("click",(e)=>{
-  if(typingarea.value.length>0){
-    typingarea.value="";
-    typingarea.disabled=false;
+button.addEventListener("click", (e) => {
+  if (typingarea.value.length > 0) {
+    typingarea.value = "";
+    typingarea.disabled = false;
   }
-})
+});
 
 button.addEventListener("click", () => {
   button.disabled = true;
@@ -67,39 +68,40 @@ button.addEventListener("click", () => {
 
 function calculatewpm() {
   typingarea.addEventListener("input", (e) => {
-    usertype = e.target.value;
-    let oneword = 5;
-    const totalcharacter = typingarea.value.length;
-    const totalword = Math.floor(totalcharacter / oneword);
-    const totalTime = initialvalue;
-    const wordperminute = Math.floor((totalword * 60) / totalTime);
-    wpm.textContent = wordperminute;
-    const highestScore=parseInt(localStorage.getItem("HighestScore")) || 0;
-  if(wordperminute>highestScore){
-    localStorage.setItem("HighestScore",wordperminute);
-  }
+    const userwords = e.target.value.trim().split(" ");
+    const checkingword = p.textContent.split(" ");
+    let correctWords = 0;
+    userwords.forEach((word, index) => {
+      if (word === checkingword[index]) {
+        correctWords++;
+      }
+    });
+    const passedtime = initialvalue;
+    if (passedtime > 0) {
+      const wordperminute = Math.floor((correctWords * 60) / passedtime);
+      wpm.textContent = wordperminute;
+    }
   });
 }
-localStorage.getItem("HighestScore")
-highscore.textContent=`HighestScore:${localStorage.getItem("HighestScore")|| 0}`;
-
+localStorage.getItem("HighestScore");
+highscore.textContent = `HighestScore:${localStorage.getItem("HighestScore") || 0}`;
 
 function calculationError(sourcesText) {
   typingarea.addEventListener("input", (e) => {
-    let error=0;
+    let error = 0;
     const userType = e.target.value;
-    const checkingword=sourcesText.split(" ");
-    const userwords=userType.trim().split(" ");
-    
-    userwords.forEach((word,index)=>{
-      if(word==="") return;
-      if(word===checkingword[index]){
+    const checkingword = sourcesText.split(" ");
+    const userwords = userType.trim().split(" ");
+
+    userwords.forEach((word, index) => {
+      if (word === "") return;
+      if (word === checkingword[index]) {
         console.log("right");
-      }else{
-        console.log('wrong');
+      } else {
+        console.log("wrong");
         error++;
       }
-    })
-    mistake.innerText=error;
+    });
+    mistake.innerText = error;
   });
 }

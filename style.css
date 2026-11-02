@@ -1,12 +1,13 @@
 body {
-  background-color: aliceblue;
+  background-color:#a7e2ef;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 .container {
   padding: 20px;
-  background-color: grey;
+  background-color: #E3F2FD;
+  border-radius: 10px;
 }
 .status-view {
   display: flex;
@@ -16,7 +17,7 @@ body {
 .box {
   height: 200px;
   min-width: 200px;
-  background-color: rgb(157, 232, 253);
+  background-color: #1B365D;
   border: none;
   margin: 10px;
   border-radius: 100%;
@@ -24,6 +25,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  color:white;
 }
 
 .typing-container {
@@ -40,8 +42,9 @@ body {
   border-radius: 5px;
   display: flex;
   justify-content: center;
-  background-color: white;
+  background-color:#005A9C;
   border-radius: 10px;
+  color:white;
 }
 
 #description{
@@ -60,10 +63,11 @@ body {
 .typing-area{
   font-size: 30px;;
   border-radius: 10px;
+  background-color:#60C1E5;
 }
 
 #button {
-  background-color: blue;
+  background-color:#0fb4d9;
   border: none;
   color: white;
   padding: 10px 20px;
@@ -71,6 +75,8 @@ body {
   border-radius: 5px;
   cursor: pointer;
   width: 100%;
+  color:black;
+
 }
 
 .bottom-area {
