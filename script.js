@@ -3,6 +3,8 @@ let typingarea = document.querySelector(".typing-area");
 let time = document.getElementById("time");
 let wpm = document.getElementById("wpm");
 let accuracy = document.getElementById("accuracy");
+const button = document.getElementById("button");
+
 const sentences = [
   "The sun rises in the east every morning, bringing light and warmth to the world. Birds begin singing, people wake up, and nature slowly becomes active. Every sunrise reminds us that life gives us another opportunity to learn something new, correct our mistakes, work toward our goals, and make meaningful progress in everything we do.",
 
@@ -26,7 +28,7 @@ const sentences = [
 ];
 
 let initialvalue = 0;
-let stoppingvalue = 60;
+let stoppingvalue = 5;
 function oneminutetimer() {
   const Timer = setInterval(() => {
     const current = initialvalue + 1;
@@ -35,14 +37,22 @@ function oneminutetimer() {
     if (initialvalue === stoppingvalue) {
       clearInterval(Timer);
     }
-    if (initialvalue === 60) {
+    if (initialvalue === 5) {
       typingarea.disabled = true;
       typingarea.value = "Time is up!!!";
+      button.disabled=false;
+      initialvalue=0;
     }
   }, 1000);
 }
 
-const button = document.getElementById("button");
+button.addEventListener("click",(e)=>{
+  if(typingarea.value.length>0){
+    typingarea.value="";
+    typingarea.disabled=false;
+  }
+})
+
 button.addEventListener("click", () => {
   button.disabled = true;
   let randomNumber = Math.random();
