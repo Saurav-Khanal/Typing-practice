@@ -63,6 +63,8 @@ button.addEventListener("click", () => {
   calculationError(sourcesText);
   oneminutetimer();
 });
+calculatewpm();
+highScoreCalculate();
 
 function calculatewpm() {
   typingarea.addEventListener("input", (e) => {
@@ -74,17 +76,14 @@ function calculatewpm() {
       const highscore = localStorage.getItem("HighestScore") || 0;
       if (wordperminute > highscore) {
         localStorage.setItem("HighestScore", wordperminute);
-        highScoreCalculate();
       }
     }
   });
 }
 
-
 function highScoreCalculate() {
   highscore.textContent = `HighestScore:${localStorage.getItem("HighestScore") || 0}`;
 }
-  calculatewpm();
 
 function calculationError(sourcesText) {
   typingarea.addEventListener("input", (e) => {

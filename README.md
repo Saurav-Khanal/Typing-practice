@@ -16,15 +16,30 @@ it helps to identify how much peopel can type in 1 minute and how much eroor the
 3.Javascript
 
 ## Demo Link
-[Here is live demo of my project](https://status-code-explorer-git-main-dr-sauravs-projects.vercel.app/index.html)
+[Here is live demo of my project](https://typing-practice-beryl-mu.vercel.app/)
 
 ## Screenshots
-![Homepage](./screenshots/image1.png)
+![Homepage](./webpage.jpg);
 
 ## Problem i faced
-i faced the problem to build the **actual wpm calculation** my logic working but not as i expected it also increaseing when typing random keyword. but i tried and with the little guideness of ai i fix it.
+i faced the problem to build the **actual wpm calculation** my logic working but not as i expected it also increaseing when typing random keyword. but i tried and with the little guideness of ai i fix it.and i faced problem to save and change the highest score also and with some debug with ai i did that i write logic but confused where i should exactly call the function.
 
-### Development
+### Development / How to Run Locally
+
+1. Clone this repository:
+   ```bash
+   git clone https://github.com/Saurav-Khanal/Typing-practice
+   ```
+
+2. Navigate to the project folder:
+   ```bash
+   cd Typing-practice
+   ```
+
+3. Open `index.html` in your browser.
+
+4. Start practicing your typing speed!
+
 
 ## AI DISCLOSURE
 i used ai to debug the **acutal wpm calculation logic**.i made my own logic but that was not working well and i tried making correct but somethign was missing so i used ai to debug it.i used ai to generate the paragraph of array to display for typing.
