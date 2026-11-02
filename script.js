@@ -4,7 +4,7 @@ let time = document.getElementById("time");
 let wpm = document.getElementById("wpm");
 let mistake= document.getElementById("mistake");
 const button = document.getElementById("button");
-
+const highscore=document.getElementById("high-wpm");
 const sentences = [
   "The sun rises in the east every morning, bringing light and warmth to the world. Birds begin singing, people wake up, and nature slowly becomes active. Every sunrise reminds us that life gives us another opportunity to learn something new, correct our mistakes, work toward our goals, and make meaningful progress in everything we do.",
 
@@ -66,15 +66,21 @@ button.addEventListener("click", () => {
 
 function calculatewpm() {
   typingarea.addEventListener("input", (e) => {
-    usertype = e.value;
+    usertype = e.target.value;
     let oneword = 5;
     const totalcharacter = typingarea.value.length;
     const totalword = Math.floor(totalcharacter / oneword);
     const totalTime = initialvalue;
     const wordperminute = Math.floor((totalword * 60) / totalTime);
     wpm.textContent = wordperminute;
+    const highestScore=parseInt(localStorage.getItem("HighestScore")) || 0;
+  if(wordperminute>highestScore){
+    localStorage.setItem("HighestScore",wordperminute);
+  }
   });
 }
+localStorage.getItem("HighestScore")
+highscore.textContent=`HighestScore:${localStorage.getItem("HighestScore")|| 0}`;
 
 
 function calculationError(sourcesText) {
