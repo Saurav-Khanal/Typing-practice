@@ -1,4 +1,3 @@
-
 let p = document.querySelector("#description");
 let typingarea = document.querySelector(".typing-area");
 let time = document.getElementById("time");
@@ -63,28 +62,29 @@ button.addEventListener("click", () => {
   const sourcesText = sentences[randomIndex];
   calculationError(sourcesText);
   oneminutetimer();
-  calculatewpm();
 });
 
 function calculatewpm() {
   typingarea.addEventListener("input", (e) => {
-    const userwords = e.target.value.trim().split(" ");
-    const checkingword = p.textContent.split(" ");
-    let correctWords = 0;
-    userwords.forEach((word, index) => {
-      if (word === checkingword[index]) {
-        correctWords++;
-      }
-    });
+    const userwords = e.target.value.length;
     const passedtime = initialvalue;
     if (passedtime > 0) {
-      const wordperminute = Math.floor((correctWords * 60) / passedtime);
+      const wordperminute = Math.floor((userwords / 5) * (60 / passedtime));
       wpm.textContent = wordperminute;
+      const highscore = localStorage.getItem("HighestScore") || 0;
+      if (wordperminute > highscore) {
+        localStorage.setItem("HighestScore", wordperminute);
+        highScoreCalculate();
+      }
     }
   });
 }
-localStorage.getItem("HighestScore");
-highscore.textContent = `HighestScore:${localStorage.getItem("HighestScore") || 0}`;
+
+
+function highScoreCalculate() {
+  highscore.textContent = `HighestScore:${localStorage.getItem("HighestScore") || 0}`;
+}
+  calculatewpm();
 
 function calculationError(sourcesText) {
   typingarea.addEventListener("input", (e) => {
