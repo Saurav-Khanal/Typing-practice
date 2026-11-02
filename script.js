@@ -2,7 +2,7 @@ let p = document.querySelector("#description");
 let typingarea = document.querySelector(".typing-area");
 let time = document.getElementById("time");
 let wpm = document.getElementById("wpm");
-let accuracy = document.getElementById("accuracy");
+let mistake= document.getElementById("mistake");
 const button = document.getElementById("button");
 
 const sentences = [
@@ -28,7 +28,7 @@ const sentences = [
 ];
 
 let initialvalue = 0;
-let stoppingvalue = 5;
+let stoppingvalue = 60;
 function oneminutetimer() {
   const Timer = setInterval(() => {
     const current = initialvalue + 1;
@@ -37,7 +37,7 @@ function oneminutetimer() {
     if (initialvalue === stoppingvalue) {
       clearInterval(Timer);
     }
-    if (initialvalue === 5) {
+    if (initialvalue === 60) {
       typingarea.disabled = true;
       typingarea.value = "Time is up!!!";
       button.disabled=false;
@@ -76,10 +76,23 @@ function calculatewpm() {
   });
 }
 
+
 function calculationError(sourcesText) {
   typingarea.addEventListener("input", (e) => {
+    let error=0;
     const userType = e.target.value;
-    console.log(sourcesText);
-    console.log(userType);
+    const checkingword=sourcesText.split(" ");
+    const userwords=userType.trim().split(" ");
+    
+    userwords.forEach((word,index)=>{
+      if(word==="") return;
+      if(word===checkingword[index]){
+        console.log("right");
+      }else{
+        console.log('wrong');
+        error++;
+      }
+    })
+    mistake.innerText=error;
   });
 }
