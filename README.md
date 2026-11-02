@@ -1,6 +1,9 @@
 # Typing-practice
 A site where people can test their typing speed.people have to type the word from given paragraph.
 
+here's an AWESOME gif of my project!
+![StatusCode Explorer Demo](./typing.gif);
+
 ## HOW THIS WAS MADE
 I made this because i love typing and i used other site for improving my typing daily. and i think i should also make one simple site for the typing using my tech stack (html,css,js).
 
