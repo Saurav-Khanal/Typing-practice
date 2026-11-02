@@ -42,6 +42,7 @@ function oneminutetimer() {
       typingarea.value = "Time is up!!!";
       button.disabled=false;
       initialvalue=0;
+      button.textContent="Start Test Again";
     }
   }, 1000);
 }
